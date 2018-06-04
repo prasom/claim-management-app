@@ -3,23 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
+    <base href="./">
     <title>Hello World!</title>
 </head>
 
 <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js
-    <script>
-        document.write(process.versions.node)
-    </script>, Chromium
-    <script>
-        document.write(process.versions.chrome)
-    </script>, and Electron
-    <script>
-        document.write(process.versions.electron)
-    </script>.
-
+    <app-root></app-root>
+    <script type="text/javascript" src="./dist/claim-app/runtime.js"></script>
+    <script type="text/javascript" src="./dist/claim-app/polyfills.js"></script>
+    <script type="text/javascript" src="./dist/claim-app/styles.js"></script>
+    <script type="text/javascript" src="./dist/claim-app/vendor.js"></script>
+    <script type="text/javascript" src="./dist/claim-app/main.js"></script>
+    <!-- <h1>APPPPPPP</h1> -->
     <script>
         // You can also require other files to run in this process
         require('./renderer.js')
