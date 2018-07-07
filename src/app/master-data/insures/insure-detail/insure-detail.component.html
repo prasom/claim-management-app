@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+    <span>ประเภทประกัน</span>
+  </mat-toolbar>
+  <mat-toolbar>
+    <button class="margin-s" mat-raised-button color="primary" (click)="onEditCarType()">แก้ไข</button>
+    <button class="margin-s" mat-raised-button color="primary" (click)="onAddCarType()">เพิ่มประเภทประกัน</button>
+    <button class="margin-s" mat-raised-button color="warn" (click)="discard()">กลับ</button>
+  </mat-toolbar>
+  <div class="padding">
+    <p class="padding">ประเภทประกัน: {{data?.name}}</p>
+  </div>

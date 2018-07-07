@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span>นำเข้าข้อมูล</span>
+</mat-toolbar>
+<mat-toolbar>
+  <button class="margin-s" mat-raised-button color="primary" (click)="save()">บันทึก</button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="discard()">ยกเลิก</button>
+</mat-toolbar>
+<div class="padding">
+  <form class="example-form" [formGroup]="insureForms">
+    <p>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ประกัน" value="" formControlName="name">
+      </mat-form-field>
+    </p>
+  </form>
+</div>

@@ -25,3 +25,25 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+#MySQL docker
+
+1. pull
+docker pull mysql
+2. run
+docker run --name=claimsql -e MYSQL_ROOT_PASSWORD=aaaa1111 -d mysql
+3. check the status of the container
+docker ps
+4. To checkout the logs of the running container use the following command
+docker logs claimsql
+5. Find the IP of the container using following. Check out the “IPAddress” from the output, this will tell you the ip address.
+docker inspect claimsql
+6. create user
+docker exec -it claimdb bash 
+mysql -uroot -p
+
+# Accessing MySQL through a Web Interface
+1. pull image
+docker pull phpmyadmin/phpmyadmin
+2. run
+docker run --name myadmin -d --link mysql1:db -p 8080:80 phpmyadmin/phpmyadmin

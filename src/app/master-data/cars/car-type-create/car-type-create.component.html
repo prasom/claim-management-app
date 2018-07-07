@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <span>เพิ่มประเภทรถ</span>
+</mat-toolbar>
+<mat-toolbar>
+  <button class="margin-s" mat-raised-button color="primary" (click)="save()">บันทึก</button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="discard()">ยกเลิก</button>
+</mat-toolbar>
+<div class="padding">
+  <form class="example-form" [formGroup]="submitForms">
+    <p>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ประเภทรถ" value="" formControlName="name">
+      </mat-form-field>
+    </p>
+  </form>
+</div>

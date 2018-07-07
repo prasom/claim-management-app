@@ -1,0 +1,83 @@
+<mat-toolbar color="primary">
+  <span>นำเข้าข้อมูล</span>
+</mat-toolbar>
+<mat-toolbar>
+  <button class="margin-s" mat-raised-button color="primary" (click)="save()">บันทึก</button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="discard()">ยกเลิก</button>
+</mat-toolbar>
+<div class="padding">
+  <form class="example-form" [formGroup]="claimForms">
+    <p>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="วันที่ลูกค้าติดต่อ" formControlName="dateContact">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </p>
+    <p>
+      <!-- <mat-form-field>
+        <mat-select placeholder="ประกัน" formControlName="insureType">
+          <mat-option *ngFor="let insure of insures" [value]="insure.insure_type_id">
+            {{ insure.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <mat-form-field>
+        <mat-select formControlName="insureType" placeholder="ประกัน" #insureSelect>
+          <mat-select-search placeholder-label="ค้นหา" [formControl]="insureFilterCtrl"></mat-select-search>
+          <mat-option *ngFor="let insure of insures" [value]="insure.insure_type_id">
+            {{insure.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-select formControlName="carType" placeholder="ประเภทรถ" #carTypeSelect>
+          <mat-select-search placeholder-label="ค้นหา" [formControl]="carTypeFilterCtrl"></mat-select-search>
+          <mat-option *ngFor="let type of carTypes" [value]="type.car_type_id">
+            {{type.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ยี่ห้อ" value="" formControlName="brand">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ทะเบียน" value="" formControlName="carNumber">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="เบอร์ติดต่อ" value="" formControlName="contactTel">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-radio-group formControlName="customerType">
+        <mat-radio-button value="1">ประกัน</mat-radio-button>
+        <mat-radio-button value="2">คู่กรณี</mat-radio-button>
+      </mat-radio-group>
+    </p>
+    <p>
+      <mat-radio-group formControlName="serviceLevel">
+        <mat-radio-button value="A">ความเสียหาย A</mat-radio-button>
+        <mat-radio-button value="B">ความเสียหาย B</mat-radio-button>
+        <mat-radio-button value="C">ความเสียหาย C</mat-radio-button>
+      </mat-radio-group>
+    </p>
+    <p>
+      <mat-slide-toggle formControlName="isParking">ทำเรื่องก่อนจอด</mat-slide-toggle>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="วันที่นัดจอด" formControlName="parkingDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </p>
+  </form>
+</div>

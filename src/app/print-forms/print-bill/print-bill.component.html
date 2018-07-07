@@ -1,0 +1,95 @@
+<mat-toolbar color="primary" class="hidden-print">
+  <p class="pull-right">พิมพิ์ใบนัด</p>
+</mat-toolbar>
+<mat-toolbar-row class="hidden-print">
+  <button class="margin-s" mat-raised-button color="primary" (click)="print()">พิมพ์</button>
+  <button class="margin-s" mat-raised-button color="primary" (click)="printToPdf()">
+    พิมพ์ PDF
+  </button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="discard()">
+    กลับ
+  </button>
+</mat-toolbar-row>
+
+<div id="print" class="padding print-header">
+  <div class="logo">
+    <img src="./dist/claim-app/assets/images/logo.png" alt="">
+  </div>
+  <div class="address text-center">
+    <h1>หจก.อู่สหมิตรยนตรกิจ</h1>
+    <p>33 หมู่ 4 ต.คุ้งลาน อ.บางปะอิน จ.พระนครศรีอยุธยา 13160</p>
+  </div>
+</div>
+<div class="print-body padding">
+  <div class="title text-center">
+    <h3>ทะเบียนคุมราคาและวางบิล</h3>
+  </div>
+  <div class="text-center">
+    <p>วันที่ {{day}} เดือน {{month}} พ.ศ. {{year}}</p>
+  </div>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+          <span class="padding">คุมราคา</span>
+        </td>
+        <td>
+          <mat-checkbox [disabled]="true" [(ngModel)]="checked" class="option-checkbox"></mat-checkbox>
+          <span class="padding">วางบิล</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-left">
+    <p>บริษัทประกัน : {{billInfo?.insure_type_desc}}</p>
+  </div>
+  <div class="text-left">
+    <p>ชื่ออู่ : หจก.อู่สหมิตรยนตรกิจ</p>
+  </div>
+  <table class="bill-detail">
+    <thead>
+      <tr>
+        <th class="text-center" rowspan="2">ลำดับที่</th>
+        <th class="text-center" rowspan="2">เลขเคลม</th>
+        <th class="text-center" rowspan="2">ทะเบียนรถ</th>
+        <th class="text-center" rowspan="2">ชื่อรถ</th>
+        <th class="text-center" rowspan="2">ป/ค</th>
+        <th class="text-center">ราคาซ่อม</th>
+      </tr>
+      <tr>
+        <th class="text-center">ค่าแรง + อะไหล่</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-center">1.</td>
+        <td>{{billInfo?.claim_no}}</td>
+        <td>{{billInfo?.car_number}}</td>
+        <td>{{billInfo?.car_type_desc}}</td>
+        <td>-</td>
+        <td>{{billInfo?.amount}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <p>ลายมือชื่อผู้วางบิล: .........................</p>
+        </td>
+        <td>
+          <p>ลายมือชื่อผู้รับวางบิล: .......................</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>วันที่: ........................................</p>
+        </td>
+        <td>
+          <p>วันที่: ........................................</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

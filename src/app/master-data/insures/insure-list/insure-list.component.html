@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  <span>บริษัทประกัน</span>
+  <span class="example-fill-remaining-space"></span>
+</mat-toolbar>
+<p>
+  <button mat-raised-button color="primary" (click)="onAddInsure()">
+    เพิ่มข้อบริษัทประกัน
+  </button>
+</p>
+
+<table mat-table [dataSource]="dataSource">
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ลำดับ </th>
+    <td mat-cell *matCellDef="let element"> {{element.insure_type_id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> ประกัน </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <!-- Checkbox Column -->
+  <!-- <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> แก้ไข </th>
+    <td mat-cell *matCellDef="let element">
+      <div class="button-row">
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">cancel</mat-icon>
+        </button>
+
+      </div>
+    </td>
+  </ng-container> -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="gotoDetail(row)"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

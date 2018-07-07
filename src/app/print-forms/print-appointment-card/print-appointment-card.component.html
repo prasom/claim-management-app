@@ -1,0 +1,176 @@
+<mat-toolbar color="primary" class="hidden-print">
+  <p class="pull-right">พิมพิ์ใบนัด</p>
+</mat-toolbar>
+<mat-toolbar-row class="hidden-print">
+  <button class="margin-s" mat-raised-button color="primary" (click)="print()">พิมพ์</button>
+  <button class="margin-s" mat-raised-button color="primary" (click)="printToPdf()">
+    พิมพ์ PDF
+  </button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="discard()">
+    กลับ
+  </button>
+</mat-toolbar-row>
+
+<div id="print" class="padding print-header">
+  <div class="logo">
+    <img src="./dist/claim-app/assets/images/logo.png" alt="">
+  </div>
+  <div class="address">
+    <h1>หจก.อู่สหมิตรยนตรกิจ</h1>
+    <p>33 หมู่ 4 ต.คุ้งลาน อ.บางปะอิน จ.พระนครศรีอยุธยา 13160</p>
+    <p>โทร.0-3533-1444-5, 098-248-4467, 098-248-4468, 098-248-4469 แฟกซ์.0-3522-6557</p>
+    <p>อีเมล: tanakij@yahoo.co.th, tanakij.ay@gmail.com</p>
+  </div>
+</div>
+<div class="print-body padding">
+  <div class="title text-center">
+    <h1>บัตรติดต่อ</h1>
+  </div>
+  <div class="text-left">
+    <p>บริษัทประกัน {{claimInfo.insure_ref_key}} รถยนต์ {{claimInfo.brand}} เลขทะเบียน {{claimInfo.car_number}}</p>
+  </div>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+          <span class="padding">สำเนาทะเบียนรถ</span>
+        </td>
+        <td>
+          <p class="pull-right">จำนวน......................แผ่น</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+          <span class="padding">สำเนาใบขับขี่</span>
+        </td>
+        <td>
+          <p class="pull-right">จำนวน......................แผ่น</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+          <span class="padding">สำเนาบัตรประชาชนเจ้าของรถ</span>
+        </td>
+        <td>
+          <p class="pull-right">จำนวน......................แผ่น</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+          <span class="padding">สำเนาหน้าตารางกรมธรรม์ประเภท1</span>
+        </td>
+        <td>
+          <p class="pull-right">จำนวน......................แผ่น</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+          <span class="padding">สำเนาหน้าตาราง พ.ร.บ</span>
+        </td>
+        <td>
+          <p class="pull-right">จำนวน......................แผ่น</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+          <span class="padding">อื่นๆ</span>
+        </td>
+        <td>
+          <p class="pull-right">จำนวน......................แผ่น</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-left">
+    <p>วันที่นัดรถยนต์เข้าซ่อม {{claimInfo.parking_date | dateTh}}</p>
+  </div>
+</div>
+<hr>
+<div id="print" class="padding print-header">
+  <div class="logo">
+    <img src="./dist/claim-app/assets/images/logo.png" alt="">
+  </div>
+  <div class="address">
+    <h1>หจก.อู่สหมิตรยนตรกิจ</h1>
+    <p>33 หมู่ 4 ต.คุ้งลาน อ.บางปะอิน จ.พระนครศรีอยุธยา 13160</p>
+    <p>โทร.0-3533-1444-5, 098-248-4467, 098-248-4468, 098-248-4469 แฟกซ์.0-3522-6557</p>
+    <p>อีเมล: tanakij@yahoo.co.th, tanakij.ay@gmail.com</p>
+  </div>
+</div>
+<div class="print-body padding">
+  <div class="title text-center">
+    <h1>บัตรติดต่อ</h1>
+  </div>
+  <div class="text-left">
+    <p>บริษัทประกัน {{claimInfo.insure_ref_key}} รถยนต์ {{claimInfo.brand}} เลขทะเบียน {{claimInfo.car_number}}</p>
+  </div>
+  <div>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+            <span class="padding">สำเนาทะเบียนรถ</span>
+          </td>
+          <td>
+            <p class="pull-right">จำนวน......................แผ่น</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+            <span class="padding">สำเนาใบขับขี่</span>
+          </td>
+          <td>
+            <p class="pull-right">จำนวน......................แผ่น</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+            <span class="padding">สำเนาบัตรประชาชนเจ้าของรถ</span>
+          </td>
+          <td>
+            <p class="pull-right">จำนวน......................แผ่น</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+            <span class="padding">สำเนาหน้าตารางกรมธรรม์ประเภท1</span>
+          </td>
+          <td>
+            <p class="pull-right">จำนวน......................แผ่น</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+            <span class="padding">สำเนาหน้าตาราง พ.ร.บ</span>
+          </td>
+          <td>
+            <p class="pull-right">จำนวน......................แผ่น</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-checkbox [disabled]="true" class="option-checkbox"></mat-checkbox>
+            <span class="padding">อื่นๆ</span>
+          </td>
+          <td>
+            <p class="pull-right">จำนวน......................แผ่น</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-left">
+    <p>วันที่นัดรถยนต์เข้าซ่อม {{claimInfo.parking_date | dateTh}}</p>
+  </div>
+</div>

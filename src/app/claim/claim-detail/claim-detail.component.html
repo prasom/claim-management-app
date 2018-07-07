@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <span>นัดรับรถ</span>
+</mat-toolbar>
+<mat-toolbar-row>
+  <button class="margin-s" mat-raised-button color="primary" (click)="edit()">แก้ไข</button>
+  <button class="margin-s" mat-raised-button color="primary" (click)="add()">
+    เพิ่มข้อมูลนัด
+  </button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="discard()">
+    กลับ
+  </button>
+</mat-toolbar-row>
+
+<div class="padding">
+  <p>วันที่ลูกค้าติดต่อ : {{claimInfo.contact_date | dateTh}}</p>
+  <p>ประกัน : {{claimInfo.insure_type_desc}}</p>
+  <p>ประเภทรถ : {{claimInfo.car_type_desc}}</p>
+  <p>ยี่ห้อ : {{claimInfo.brand}}</p>
+  <p>ทะเบียน : {{claimInfo.car_number}}</p>
+  <p>เบอร์ติดต่อ : {{claimInfo.contact_tel}}</p>
+  <p *ngIf="claimInfo.customer_type == 1">ประกัน/คู่กรณี : ประกัน</p>
+  <p *ngIf="claimInfo.customer_type == 2">ประกัน/คู่กรณี : คู่กรณี</p>
+  <p>ระดับความเสียหาย : {{claimInfo.service_level}}</p>
+  <p *ngIf="claimInfo.is_parking == 1">ทำเรื่องก่อนจอด : ทำเรื่องก่อนจอด</p>
+  <p *ngIf="claimInfo.is_parking != 1">ทำเรื่องก่อนจอด : ไม่ได้ทำเรื่องก่อนจอด</p>
+  <p>วันที่นัดจอด : {{claimInfo.parking_date | dateTh}}</p>
+</div>

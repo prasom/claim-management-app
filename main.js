@@ -4,6 +4,13 @@ const {
     BrowserWindow
 } = require('electron')
 
+const electron = require('electron')
+const fs = require('fs')
+const os = require('os')
+const path = require('path')
+const ipc = electron.ipcMain
+const shell = electron.shell
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -28,6 +35,7 @@ function createWindow() {
         // when you should delete the corresponding element.
         mainWindow = null
     })
+
 }
 
 // This method will be called when Electron has finished
@@ -49,5 +57,39 @@ app.on('activate', function () {
     // dock icon is clicked and there are no other windows open.
     if (mainWindow === null) {
         createWindow()
+
     }
 })
+
+
+
+function printPDF() {
+    const pdfPath = path.join(os.tmpdir(), 'print.pdf')
+    mainWindow.webContents.printToPDF({}, function (error, data) {
+        if (error) throw error
+        fs.writeFile(pdfPath, data, function (error) {
+            if (error) {
+                throw error
+            }
+            shell.openItem(pdfPath)
+        })
+    })
+}
+
+function print() {
+    webContents.print({
+        silent: false,
+        printBackground: true
+    }, function (error, data) {
+        if (error) throw error
+        fs.writeFile(pdfPath, data, function (error) {
+            if (error) {
+                throw error
+            }
+            shell.openItem(pdfPath)
+        })
+    });
+}
+
+exports.printPdf = () => printPDF();
+exports.printDefault = () => print();

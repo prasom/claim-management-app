@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <span>รับรถจอด</span>
+</mat-toolbar>
+<mat-toolbar-row>
+  <button *ngIf="!parkingDetail?.id_parking_history" mat-raised-button color="primary" (click)="save()">
+    บันทึก
+  </button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="discard()">
+    กลับ
+  </button>
+</mat-toolbar-row>
+
+<div class="padding">
+  <p>วันที่ลูกค้าติดต่อ : {{parkingDetail.contact_date | dateTh}}</p>
+  <p>ประกัน : {{parkingDetail.insure_type_desc}}</p>
+  <p>ประเภทรถ : {{parkingDetail.car_type_desc}}</p>
+  <p>ยี่ห้อ : {{parkingDetail.brand}}</p>
+  <p>ทะเบียน : {{parkingDetail.car_number}}</p>
+  <p>เบอร์ติดต่อ : {{parkingDetail.contact_tel}}</p>
+  <p *ngIf="parkingDetail.customer_type == 1">ประกัน/คู่กรณี : ประกัน</p>
+  <p *ngIf="parkingDetail.customer_type == 2">ประกัน/คู่กรณี : คู่กรณี</p>
+  <p>ระดับความเสียหาย : {{parkingDetail.service_level}}</p>
+  <p *ngIf="parkingDetail.is_parking == 1">ทำเรื่องก่อนจอด : ทำเรื่องก่อนจอด</p>
+  <p *ngIf="parkingDetail.is_parking != 1">ทำเรื่องก่อนจอด : ไม่ได้ทำเรื่องก่อนจอด</p>
+  <p>วันที่นัดจอด : {{parkingDetail.parking_date | dateTh}}</p>
+</div>
+<form class="example-form padding" [formGroup]="parkingForms">
+  <mat-checkbox [disabled]="parkingDetail?.id_parking_history" formControlName="isParking">จอด</mat-checkbox>
+</form>

@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <span>วางบิล</span>
+</mat-toolbar>
+<mat-toolbar-row>
+  <button *ngIf="!billDetail?.id_parking_history" mat-raised-button color="primary" (click)="save()">
+    บันทึก
+  </button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="print()">
+      พิมพิ์
+    </button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="discard()">
+    กลับ
+  </button>
+</mat-toolbar-row>
+
+<div class="padding">
+  <p>ทะเบียน : {{billDetail?.car_number}}</p>
+  <p>ยี่ห้อ : {{billDetail?.brand}}</p>
+  <p *ngIf="billDetail?.customer_type == 1">ประกัน/คู่กรณี : ประกัน</p>
+  <p *ngIf="billDetail?.customer_type == 2">ประกัน/คู่กรณี : คู่กรณี</p>
+</div>
+<form class="example-form padding" [formGroup]="billForms">
+  <p>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="เลขเคลม" value="" formControlName="claimNo">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="ราคาซ่อม" value="" formControlName="amount">
+    </mat-form-field>
+  </p>
+</form>

@@ -1,3 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
 
-body { margin: 0; }
+body {
+    margin: 0;
+}
+
+.margin-s {
+    margin: 5px !important;
+}
+
+.padding {
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.pull-right {
+    display: inline-flex;
+    justify-self: flex-end;
+}
+
+.active{
+    background-color: #bdbdbd;
+}
+
+@media print {
+    .hidden-print {
+        display: none !important;
+    }
+    .hidden-print-margin {
+        margin-left: 0 !important;
+    }
+}

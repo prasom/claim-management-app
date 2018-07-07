@@ -1,14 +1,23 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  <mat-sidenav #drawer class="sidenav hidden-print" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">ระบบจัดการรับรถ</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/claim-list-page">นัดรับรถ</a>
-      <a mat-list-item routerLink="/second-page">รับรถจอด</a>
-      <a mat-list-item routerLink="/third-page">วางบิล</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/claim-list-page">
+        <mat-icon class="routeIcon">note_add</mat-icon>นัดรับรถ</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/parking-list">
+        <mat-icon class="routeIcon">swap_horizontal_circle</mat-icon>รับรถจอด</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/bill-list">
+        <mat-icon class="routeIcon">payment</mat-icon>วางบิล</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/insure-list">
+        <mat-icon class="routeIcon">recent_actors</mat-icon>บริษัทประกัน</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/car-type-list">
+        <mat-icon class="routeIcon">drive_eta</mat-icon>ประเภทรถ</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/company-setting">
+        <mat-icon class="routeIcon">settings_input_component</mat-icon>ตั้งค่า</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="hidden-print-margin">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
