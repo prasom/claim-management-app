@@ -4,13 +4,14 @@ const {
     BrowserWindow
 } = require('electron')
 
+
 const electron = require('electron')
 const fs = require('fs')
 const os = require('os')
 const path = require('path')
 const ipc = electron.ipcMain
 const shell = electron.shell
-
+const isDevelopment = process.env.NODE_ENV !== 'production'
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -23,7 +24,19 @@ function createWindow() {
     })
 
     // and load the index.html of the app.
-    mainWindow.loadFile('index.html')
+    
+    mainWindow.loadURL('file://' + __dirname + '/index.html')
+
+    // if (isDevelopment) {
+    //     mainWindow.loadFile(`index.html`);
+    // }
+    // else {
+    //     mainWindow.loadURL(formatUrl({
+    //         pathname: path.join(__dirname, 'index.html'),
+    //         protocol: 'file',
+    //         slashes: true
+    //     }))
+    // }
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()

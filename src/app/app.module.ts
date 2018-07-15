@@ -96,6 +96,7 @@ const appRoutes: Routes = [
   { path: 'print-appointment-card', component: PrintAppointmentCardComponent },
   { path: 'print-bill', component: PrintBillComponent },
   { path: 'company-setting', component: CompanySettingComponent },
+  { path: '**', redirectTo: '/claim-list-page', pathMatch: 'full' },
 ];
 
 

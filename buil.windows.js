@@ -13,7 +13,7 @@ function init() {
     // Project directory is the root of the application
     projectDir = jetpack;
     // Build directory is our destination where the final build will be placed
-    buildDir = projectDir.dir('./dist', {
+    buildDir = projectDir.dir('./packages', {
         empty: true
     });
     // angular application directory
@@ -53,8 +53,8 @@ function updateResources() {
     rcedit(buildDir.path('electron.exe'), {
         'icon': projectDir.path('resources/windows/icon.ico'),
         'version-string': {
-            'ProductName': manifest.name,
-            'FileDescription': manifest.description,
+            'ProductName': "ClaimMangement",
+            'FileDescription':"Claim Mangement Application",
         }
     }, function (err) {
         if (!err) {
@@ -65,7 +65,7 @@ function updateResources() {
 }
 //Rename the electron exe 
 function rename() {
-    return buildDir.renameAsync('electron.exe', manifest.name + '.exe');
+    return buildDir.renameAsync('electron.exe', "ClaimMangement" + '.exe');
 }
 
 function createInstaller() {
@@ -83,11 +83,11 @@ function createInstaller() {
     var installScript = projectDir.read('resources/windows/installer.nsi');
 
     installScript = replace(installScript, {
-        name: manifest.name,
-        productName: manifest.name,
-        version: manifest.version,
+        name: "ClaimMangement",
+        productName: "ClaimMangement",
+        version:1,
         src: buildDir.path(),
-        dest: projectDir.path('dist/Installer.exe'),
+        dest: projectDir.path('packages/Installer.exe'),
         icon: buildDir.path('icon.ico'),
         setupIcon: buildDir.path('icon.ico'),
         banner: projectDir.path('resources/windows/banner.bmp'),

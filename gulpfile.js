@@ -11,7 +11,7 @@ var release_windows = require('./buil.windows');
 
 
 var projectDir = jetpack;
-var destDir = projectDir.cwd('./build');
+var destDir = projectDir.cwd('./dist');
 
 // -------------------------------------
 // Tasks
@@ -21,21 +21,34 @@ gulp.task('clean', function (callback) {
     return destDir.dirAsync('.', { empty: true });
 });
 
-gulp.task('copy', ['clean'], function () {
-    return projectDir.copyAsync('dist', destDir.path(), {
+gulp.task('copy:main', function () {
+    return projectDir.copyAsync(projectDir.cwd(), projectDir.cwd('./dist/main').path(), {
+        overwrite: true,
+        matching: [
+            './dist/claim-app/**/*',
+            './main.js',
+            './renderer.js',
+            './index.html',
+            './package.json'
+        ]
+    });
+});
+
+gulp.task('predist', function () {
+    return projectDir.copyAsync(projectDir.cwd(), destDir.path(), {
         overwrite: true,
         matching: [
             './node_modules/**/*',
-            '*.html',
-            '*.css',
-            'main.js',
-            'package.json'
+            './dist/claim-app/**/*',
+            './main.js',
+            './index.html',
+            './package.json'
         ]
     });
 });
 
 gulp.task('build', ['copy'], function () {
-    return gulp.src('./dist/index.html')
+    return gulp.src('./packages/index.html')
         .pipe(usemin({
             js: [uglify()]
         }))
@@ -43,8 +56,8 @@ gulp.task('build', ['copy'], function () {
 });
 
 
-gulp.task('run', function () {
-    childProcess.spawn(electron, ['./dist'], { stdio: 'inherit' });
+gulp.task('run',['copy:main'], function () {
+    childProcess.spawn(electron, ['./dist/main'], { stdio: 'inherit' });
 });
 
 gulp.task('build-electron', function () {
