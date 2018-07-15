@@ -91,8 +91,8 @@ export class ClaimFormComponent implements OnInit, AfterViewInit, OnDestroy {
       contactTel: [''],
       carType: [null, Validators.required],
     });
+
     this.insureService.getInsure().subscribe(data => {
-      debugger;
       this.insures = this.copyInsures(data);
       this.insuresOg = this.copyInsures(data);
       this.insures.splice(0, 0, this.insuresDefault[0]);
@@ -101,7 +101,6 @@ export class ClaimFormComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     this.carTypeService.getCarType().subscribe(data => {
-
       this.carTypes = this.copyCarTypes(data);
       this.carTypesOg = this.copyCarTypes(data);
       this.carTypes.splice(0, 0, this.carTypeDefault[0]);
@@ -197,7 +196,8 @@ export class ClaimFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getClaimDetail() {
     this.claimService.getClaimById(this.id).subscribe(data => {
-      this.claimForms.controls['insureType'].setValue(data.insure_ref_key);
+      this.claimForms.controls['dateContact'].setValue(data.contact_date);
+      this.claimForms.controls['insureType'].setValue(parseInt(data.insure_ref_key));
       this.claimForms.controls['carType'].setValue(data.car_type_id);
       this.claimForms.controls['brand'].setValue(data.brand);
       this.claimForms.controls['carNumber'].setValue(data.car_number);
