@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span>วางบิล</span>
+</mat-toolbar>
+<mat-toolbar-row>
+  <button class="margin-s" mat-raised-button color="primary" (click)="print()">
+    พิมพิ์
+  </button>
+  <button class="margin-s" mat-raised-button color="warn" (click)="discard()">
+    กลับ
+  </button>
+</mat-toolbar-row>
+<div class="padding">
+  <p>ทะเบียน : {{billDetail?.car_number}}</p>
+  <p>ยี่ห้อ : {{billDetail?.brand}}</p>
+  <p *ngIf="billDetail?.customer_type == 1">ประกัน/คู่กรณี : ประกัน</p>
+  <p *ngIf="billDetail?.customer_type == 2">ประกัน/คู่กรณี : คู่กรณี</p>
+  <p>
+    เลขเคลม : {{billDetail?.claim_no}}
+  </p>
+  <p>
+    ราคาซ่อม : {{billDetail?.amount}}
+  </p>
+</div>
