@@ -4,6 +4,10 @@ body {
     margin: 0;
 }
 
+.fixed-min-height{
+    min-height: 400px;
+}
+
 .margin-s {
     margin: 5px !important;
 }

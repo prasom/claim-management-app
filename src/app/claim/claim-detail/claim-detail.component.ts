@@ -36,4 +36,8 @@ export class ClaimDetailComponent implements OnInit {
     this.router.navigate(['claim-list-page']);
   }
 
+  print() {
+    this.router.navigate(['print-appointment-card', { id: this.id }]);
+  }
+
 }

@@ -63,7 +63,7 @@ export class BillListComponent implements OnInit, AfterViewInit {
   }
 
   onViewDetail(item: BillFullViewModel) {
-    this.router.navigate(['bill-detail', { id: item.id }]);
+    this.router.navigate(['bill-view', { id: item.id }]);
   }
 
   createFilter() {

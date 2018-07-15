@@ -78,6 +78,7 @@ import { BillService } from './bill/bill.service';
 import { DateThPipe } from './shared/date.pipe';
 import { FilterPipe } from './shared/filter.pipe';
 import { CompanySettingComponent } from './company-setting/company-setting.component';
+import { BillViewComponent } from './bill/bill-view/bill-view.component';
 
 const appRoutes: Routes = [
   { path: 'claim-list-page', component: ClaimListComponent },
@@ -93,6 +94,7 @@ const appRoutes: Routes = [
   { path: 'parking-detail', component: ParkingDetailComponent },
   { path: 'bill-list', component: BillListComponent },
   { path: 'bill-detail', component: BillDetailComponent },
+  { path: 'bill-view', component: BillViewComponent },
   { path: 'print-appointment-card', component: PrintAppointmentCardComponent },
   { path: 'print-bill', component: PrintBillComponent },
   { path: 'company-setting', component: CompanySettingComponent },
@@ -160,6 +162,7 @@ export class DemoMaterialModule { }
     ParkingDetailComponent,
     BillListComponent,
     BillDetailComponent,
+    BillViewComponent,
     PrintAppointmentCardComponent,
     PrintBillComponent,
     CompanySettingComponent,
