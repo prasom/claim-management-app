@@ -9,7 +9,7 @@ export class DbConnectService {
 
   ) {
     this.connection = mysql.createConnection({
-      host: 'localhost',
+      host: '127.0.0.1',
       user: 'root',
       password: 'admin1234',
       database: 'claim_db'
