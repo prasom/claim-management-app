@@ -44,7 +44,7 @@ export class BillDetailComponent implements OnInit {
       };
       this.billService.createBill(this.billRequest).then(res => {
         this.claimService.updateBillStatus(1, this.id).then(res => {
-          this.router.navigate(['bill-view']);
+          this.router.navigate(['bill-view', { id: res.insertId }]);
         });
       });
     }
